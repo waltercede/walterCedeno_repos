@@ -32,3 +32,18 @@ export interface RespuestaRepositoryTDO {
     state: string;
 }
 
+export interface InterfaceRegistreTDO {
+    name: string;
+    status: number;
+    name_tribu: string;
+    status_tribu: number;
+    coverage: number;
+    codeSmells: number;
+    bugs: number;
+    vulnerabilities: number;
+    hotspots: number;
+    name_repository: string;
+    state: string;
+    statusRepository: string;
+}
+

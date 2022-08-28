@@ -25,6 +25,6 @@ export class Repository  extends BaseEntity{
   @Column({ length: 1 })
   status: string;
 
-  @ManyToOne(() => Tribe, (tribe) => tribe.id_tribe)
+  @ManyToOne(() => Tribe, (tribe) => tribe.id_tribe,)
   id_tribe: Tribe
 }

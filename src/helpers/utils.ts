@@ -25,7 +25,7 @@ export const functionReturnStateRepository =  (value: string):string  => {
     let estadoActual = '';
     switch (value) {
         case 'E': {
-            estadoActual = 'Habilidato'
+            estadoActual = 'Habilitado'
             break;
         }
         case 'D': {

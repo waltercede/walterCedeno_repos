@@ -30,7 +30,7 @@ class ServerWalterCedeno {
         .then(async () => console.log("Conectado con exito.!!"))
         .catch((error) => console.log(error));
     } catch (error) {
-      //throw new Error(error || undefined);
+      throw new Error('Problemas' + error);
     }
   }
   listen() {
@@ -40,6 +40,5 @@ class ServerWalterCedeno {
       )
     );
   }
-
 }
 export default ServerWalterCedeno;

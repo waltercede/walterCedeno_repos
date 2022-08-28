@@ -1,9 +1,8 @@
-import { Resolver } from "dns";
 import { Request, Response } from "express";
-import { CreateOrganizationCaseUse, deleteOrganizateCaseUse, ListOrganizateionCaseUse, updateOrganizateCaseUse } from "../case_use/case-use-organization";
+import { CreateOrganizationCaseUse, CreateOrganizationTodosCaseUse, deleteOrganizateCaseUse, ListOrganizateionCaseUse, updateOrganizateCaseUse } from "../case_use/case-use-organization";
 import { ResponseValue } from "../helpers/response-value";
-import onSerializeBodyOrganization from "../helpers/serializate-body";
-import { OrganizationTDO } from "../helpers/type-interface";
+import { onSerializeBodyOrganization, onSerializeBodyOrganizationTodo } from "../helpers/serializate-body";
+import { InterfaceRegistreTDO, OrganizationTDO } from "../helpers/type-interface";
 
 
 export const CreateOrganization = async (req: Request, res: Response) => {
@@ -11,6 +10,19 @@ export const CreateOrganization = async (req: Request, res: Response) => {
     try {
         const organizationDto: OrganizationTDO = onSerializeBodyOrganization(req.body);
         const respuesta = await CreateOrganizationCaseUse(organizationDto);
+        if (respuesta.status != 'ok') {
+            return modeloRespuesta.BadRequest(res, respuesta.datos)
+        }
+        return modeloRespuesta.OK(res, respuesta)
+    } catch (error) {
+        return modeloRespuesta.InternalError(res, error);
+    }
+}
+export const CreateOrganizationTodo = async (req: Request, res: Response) => {
+    const modeloRespuesta = new ResponseValue();
+    try {
+        const organizationDto: InterfaceRegistreTDO = onSerializeBodyOrganizationTodo(req.body);
+        const respuesta = await CreateOrganizationTodosCaseUse(organizationDto);
         if (respuesta.status != 'ok') {
             return modeloRespuesta.BadRequest(res, respuesta.datos)
         }
