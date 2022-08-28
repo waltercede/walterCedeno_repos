@@ -1,14 +1,22 @@
 import express, { Application } from "express";
 import cors from "cors";
 import AppDataSource from "../data/db_waltercedeno";
+import organizationRouter from "../presenters/route-organizacion";
+
+
 class ServerWalterCedeno {
-  private app: Application;
+  public app: Application;
   private port: String;
+  private enpointPath = { organization: '/api/organization' }
   constructor() {
     this.app = express();
-    this.port = process.env.PORT || "9095";
-    this.dbConnection();
+    this.port = process.env.PORT || "9096";
     this.middlewares();
+    this.dbConnection();
+    this.routes();
+  }
+  routes() {
+    this.app.use(this.enpointPath.organization, organizationRouter)
   }
   middlewares() {
     this.app.use(cors());
@@ -30,8 +38,6 @@ class ServerWalterCedeno {
       )
     );
   }
-  // routes(){
-  //   this.app.use(this.apipaths.usuarios,useRoutes)
-  // }
+
 }
 export default ServerWalterCedeno;
