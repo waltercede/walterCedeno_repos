@@ -4,3 +4,31 @@ export interface OrganizationTDO {
     status: number;
 }
 
+// export interface TribuTDO extends OrganizationTDO {
+//     id_tribe: number;
+//     name_tribu: string;
+//     status_tribu: number;
+// }
+// export interface RepositoryTDO extends TribuTDO {
+//     id_repository: number;
+//     name_repository: string;
+//     state: string;
+//     create_time: string;
+//     statusRepository: string;
+// }
+
+
+export interface RespuestaRepositoryTDO {
+    id: string;
+    name: string;
+    tribe: string;
+    organization: string;
+    coverage: string;
+    codeSmells: number;
+    bugs: number;
+    vulnerabilities: number;
+    hotspots: number;
+    verificationState: string;
+    state: string;
+}
+
