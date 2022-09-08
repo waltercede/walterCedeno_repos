@@ -9,6 +9,7 @@ export const CreateOrganization = async (req: Request, res: Response) => {
     const modeloRespuesta = new ResponseValue();
     try {
         const organizationDto: OrganizationTDO = onSerializeBodyOrganization(req.body);
+        
         const respuesta = await CreateOrganizationCaseUse(organizationDto);
         if (respuesta.status != 'ok') {
             return modeloRespuesta.BadRequest(res, respuesta.datos)

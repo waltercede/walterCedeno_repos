@@ -2,6 +2,7 @@
 export interface OrganizationTDO {
     name: string;
     status: number;
+    email: string;
 }
 
 // export interface TribuTDO extends OrganizationTDO {

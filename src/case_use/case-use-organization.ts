@@ -13,6 +13,7 @@ export const CreateOrganizationCaseUse = async (value: OrganizationTDO) => {
         const newOrganization = new Organization();
         newOrganization.name = value.name;
         newOrganization.status = value.status;
+        newOrganization.email=value.email;
         await newOrganization.save();
         return estadosRespuestas.OK(value);
     }
